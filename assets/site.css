@@ -459,7 +459,7 @@ html.js:not(.page-is-ready) .primary-nav a.active:before {
 }
 .record-title .date {
   color: var(--muted);
-  font-size: 1.08em;
+  font-size: 0.9em;
 }
 .record-detail {
   margin-top: 0.65rem;
