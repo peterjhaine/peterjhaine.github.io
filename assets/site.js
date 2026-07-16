@@ -317,8 +317,14 @@
     root.classList.remove("page-is-ready");
     root.classList.add("page-is-leaving");
 
+    const transitionDelay = window.matchMedia(
+      "(max-width: 980px)",
+    ).matches
+      ? 667
+      : 1000;
+
     window.setTimeout(() => {
       window.location.href = destination.href;
-    }, 1000);
+    }, transitionDelay);
   });
 })();

@@ -219,18 +219,26 @@ html.js:not(.page-is-ready) .primary-nav a.active:before {
   overflow: hidden;
 }
 .hero-fog {
-  background:
-    linear-gradient(180deg, rgba(17, 26, 22, 0.08), rgba(17, 26, 22, 0.3)),
-    radial-gradient(
-      ellipse at 80% 18%,
-      rgba(159, 186, 159, 0.16),
-      transparent 31%
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(7, 10, 11, 0.82) 0%,
+      rgba(8, 12, 13, 0.58) 24%,
+      rgba(8, 12, 13, 0.28) 48%,
+      rgba(10, 14, 14, 0.54) 78%,
+      rgba(12, 17, 16, 0.92) 100%
     ),
-    radial-gradient(
-      ellipse at 22% 78%,
-      rgba(103, 132, 113, 0.15),
-      transparent 34%
-    );
+    linear-gradient(
+      90deg,
+      rgba(7, 10, 11, 0.56) 0%,
+      rgba(7, 10, 11, 0.36) 24%,
+      rgba(7, 10, 11, 0.16) 46%,
+      rgba(7, 10, 11, 0.18) 100%
+    ),
+    url("hero-background-option-5.png");
+  background-position: center center, center center, 64% 48%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .hero-fog::before,
 .hero-fog::after {
@@ -244,8 +252,8 @@ html.js:not(.page-is-ready) .primary-nav a.active:before {
   height: 28vw;
   right: -12vw;
   top: 8vh;
-  background: rgba(148, 177, 145, 0.16);
-  filter: blur(95px);
+  background: rgba(114, 138, 122, 0.13);
+  filter: blur(110px);
   transform: rotate(-8deg);
 }
 .hero-fog::after {
@@ -253,8 +261,8 @@ html.js:not(.page-is-ready) .primary-nav a.active:before {
   height: 24vw;
   left: 10vw;
   bottom: 4vh;
-  background: rgba(108, 140, 118, 0.15);
-  filter: blur(105px);
+  background: rgba(80, 104, 91, 0.16);
+  filter: blur(118px);
   transform: rotate(7deg);
 }
 .hero-copy {
@@ -1033,5 +1041,20 @@ body.teaching-page .teaching-list > .course-row:last-child {
 
   .section-nav-divider {
     width: 100%;
+  }
+}
+
+/* Mobile page changes are 1.5× faster than desktop. */
+@media (max-width: 980px) {
+  html.js.page-is-ready .site-main {
+    transition-duration: 1s;
+  }
+
+  html.js.page-is-leaving .site-main {
+    transition-duration: 0.667s;
+  }
+
+  html.js.page-is-leaving .primary-nav a.active::before {
+    transition-duration: 0.667s;
   }
 }
