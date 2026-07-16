@@ -230,6 +230,7 @@
 
 (() => {
   const root = document.documentElement;
+  const mobile = window.matchMedia("(max-width: 980px)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const showPage = () => {
@@ -276,6 +277,14 @@
     if (sameDocument) {
       event.preventDefault();
 
+      // Mobile returns to the top immediately. Desktop retains the deliberate
+      // constant-speed scroll used throughout the existing design.
+      if (mobile.matches) {
+        root.classList.remove("constant-scroll");
+        window.scrollTo(0, 0);
+        return;
+      }
+
       const startY = window.scrollY;
       if (startY <= 1) return;
 
@@ -313,18 +322,16 @@
 
     if (!isPageLink) return;
 
+    // On mobile, allow the browser's ordinary navigation to occur immediately.
+    // Desktop continues to use the existing one-second fade-out.
+    if (mobile.matches) return;
+
     event.preventDefault();
     root.classList.remove("page-is-ready");
     root.classList.add("page-is-leaving");
 
-    const transitionDelay = window.matchMedia(
-      "(max-width: 980px)",
-    ).matches
-      ? 667
-      : 1000;
-
     window.setTimeout(() => {
       window.location.href = destination.href;
-    }, transitionDelay);
+    }, 1000);
   });
 })();

@@ -1044,17 +1044,17 @@ body.teaching-page .teaching-list > .course-row:last-child {
   }
 }
 
-/* Mobile page changes are 1.5× faster than desktop. */
+/* Mobile page changes and current-page returns are intentionally instant. */
 @media (max-width: 980px) {
-  html.js.page-is-ready .site-main {
-    transition-duration: 1s;
-  }
-
+  html.js .site-main,
+  html.js.page-is-ready .site-main,
   html.js.page-is-leaving .site-main {
-    transition-duration: 0.667s;
+    opacity: 1;
+    transition: none;
+    pointer-events: auto;
   }
 
   html.js.page-is-leaving .primary-nav a.active::before {
-    transition-duration: 0.667s;
+    transition: none;
   }
 }
